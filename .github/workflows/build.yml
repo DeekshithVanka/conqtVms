@@ -3,6 +3,10 @@ on: push
 jobs:
   cypress-run:
     runs-on: ubuntu-24.04
+    strategy:
+      fail-fast:false
+      matrix:
+        containers:[1,2,3,4]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -10,3 +14,6 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
+        with:
+        
+          parallel:true
