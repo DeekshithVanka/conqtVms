@@ -26,6 +26,22 @@ export class registerPage{
         postalcode:'[name="PostalCode"]',
         registerNowbtn:'.button-submit',
         disclaimerbox:'#disclaimerCheckbox',
+        companyTypeError:'Please select the Company Type.',
+       vendorTypeError:'Please select the Vendor Type.',
+        establishedDateError:'Please Enter the Established Date.',
+       usernameError:'Please Enter the Username.',
+       passwordError:'Password should be 8 - 20 characters include atleast one uppercase, lowercase, number & special character.',
+       confirmPasswordError:'Please match the password',
+
+        companynameError:'Please Enter the Company Name.',
+       adressline1Error:'Please Enter the Address Line 1.',
+       stateError:'Please select the State/Region.',
+       cityErrror:'Please select the City.',
+      postalcodeError:'Please Enter the Postal Code.',
+      registerCountryError:'Please select the Registered Country.',
+      usernameErrorAT:'Username should be in a proper format e.g. something@name.com',
+      adressline1ErrorAT:'Address Line 1 should be minimum 5 characters.',
+       postalcodeErrorAT:'Postal Code should be minimum 5 characters.'
 
          }
     openurl(){
@@ -46,10 +62,11 @@ export class registerPage{
         cy.get(this.weblocators.quickRegisterbtn).eq(1).click()
       }
       selectcountry(country){
-        cy.get(this.weblocators.registerCountry).select(country)
+         cy.get(this.weblocators.registerCountry).select(country)
       }
-      selectVendor(vendor){
-        cy.get(this.weblocators.vendorType).select(vendor)
+      selectVendor(vendata){
+        return cy.get(this.weblocators.vendorType).as("vt").select(vendata)
+        
       }
       selectCompanytype(CompanyType){
         cy.get(this.weblocators.companyType).select(CompanyType)
@@ -104,7 +121,8 @@ export class registerPage{
         cy.get(this.weblocators.postalcode).type(postalcode)
       }
       clickregisternowbtn(){
-        cy.get(this.weblocators.registerNowbtn).click()
+      cy.get(this.weblocators.registerNowbtn).click()
+
       }
       Disclaimercheck(){
         cy.get(this.weblocators.disclaimerbox).check()
@@ -112,6 +130,58 @@ export class registerPage{
       submit(){
         cy.contains('Submit').click()
       }
+
+      registerCountryError(){
+      return cy.contains(this.weblocators.registerCountryError)
+      }
+      companyTypeError(){
+        return cy.contains(this.weblocators.companyTypeError)
+      }
+      vendorTypeError(){
+        return cy.contains(this.weblocators.vendorTypeError)
+      }
+      establishedDateError(){
+        return cy.contains(this.weblocators.establishedDateError)
+      }
+      usernameError(){
+        return cy.contains(this.weblocators.usernameError)
+      }
+      passwordError(){
+        return cy.contains(this.weblocators.passwordError)
+      }
+      confirmPasswordError(){
+        return cy.contains(this.weblocators.confirmPasswordError)
+      }
+      adressline1Error(){
+        return cy.contains(this.weblocators.adressline1Error)
+      }
+      stateError(){
+        return cy.contains(this.weblocators.stateError)
+      }
+      cityErrror(){
+        return cy.contains(this.weblocators.cityErrror)
+      }
+      postalcodeError(){
+        return cy.contains(this.weblocators.postalcodeError)
+      }
+      companynameError(){
+        return cy.contains(this.weblocators.companyTypeError)
+      }
+      
+      usernameErrorAT(){
+        return cy.contains(this.weblocators.usernameErrorAT)
+      }
+      
+      adressline1ErrorAT(){
+        return cy.contains(this.weblocators.adressline1ErrorAT)
+      }
+      
+      postalcodeErrorAT(){
+        return cy.contains(this.weblocators.postalcodeErrorAT)
+      }
+     
+      
+      
 
       
 
